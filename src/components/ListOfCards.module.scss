@@ -1,0 +1,48 @@
+$color-for-back: rgb(218, 228, 249);
+
+body {
+	background: linear-gradient(0.25turn, rgb(185, 175, 192), rgb(106, 109, 152));
+}
+
+.main_page {
+	width: 80%;
+	margin: 30px auto;
+
+	p {
+		font-size: 20px;
+		color: rgb(12, 12, 44);
+		margin-bottom: 10px;
+	}
+}
+
+.list_of_cards {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: max-content;
+	gap: 2rem;
+}
+
+@media (max-width: 1300px) {
+	.main_page {
+		width: 80%;
+		margin: 20px auto;
+	}
+	.list_of_cards {
+		margin: 20px auto;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 900px) {
+	.main_page {
+		width: 90%;
+		max-width: 500px;
+		margin: 20px auto;
+		align-content: center;
+	}
+	.list_of_cards {
+		max-width: 500px;
+		width: 100%;
+		grid-template-columns: none;
+	}
+}

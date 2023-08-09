@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import ListOfCards from './components/ListOfCards';
+import ArticlePage from './components/ArticlePage';
+import Navbar from './components/Navbar';
+import About from './components/About';
+import Footer from './components/Footer';
+import './App.scss';
+import { CardContext } from './store/card-context';
+import { useState } from 'react';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [ data, setData ] = useState();
+	return (
+		<div className="App">
+			<CardContext.Provider value={{ data, setData }}>
+				<Navbar />
+				<ScrollToTop>
+					<Routes>
+						<Route path="/" element={<ListOfCards />} />
+						<Route path="/:id" element={<ArticlePage />} />
+						<Route path="/about" element={<About />} />
+					</Routes>
+				</ScrollToTop>
+				<Footer />
+			</CardContext.Provider>
+		</div>
+	);
 }
 
 export default App;
